@@ -80,7 +80,7 @@ setInterval(function(){
 function addToCount() {
   COUNT++
   console.log('debounce');
-  console.log(count);
+  console.log(COUNT);
 }
 
 
