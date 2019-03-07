@@ -1,5 +1,5 @@
-"use strict";
-const debounce = require("lodash/debounce");
+// "use strict";
+const _ = require("underscore");
 const mfrc522 = require("./node_modules/mfrc522-rpi/index.js");
 
 const cardArray = ['a44e81e', 'd80d673'];
@@ -8,7 +8,7 @@ let COUNT = 0;
 //# Init WiringPi with SPI Channel 0
 mfrc522.initWiringPi(0);
 console.log('READY!');
-
+// addToCount()
 //# This loop keeps checking for chips. If one is near it will get the UID and authenticate
 // console.log("scanning...");
 // console.log("Please put chip or keycard in the antenna inductive zone!");
@@ -44,7 +44,9 @@ setInterval(function(){
 
     if (cardArray.indexOf(uidValue) >= 0) {
       console.log(uidValue);
-      addToCount()
+      // addToCount()
+      _.debounce(run(), 100, true )
+
       // count++
       // debounce(addToCount, 1100, {leading:true} )
       // throttle(function(){ return count++} , 500)
@@ -76,15 +78,19 @@ setInterval(function(){
     // console.log(count);
 
 
-}, 1000);
+}, 2000);
 
-function addToCount() {
-  debounce(function(){
-    COUNT++
-    console.log('debounce');
-    console.log(COUNT);
-  }, 1100, {leading:true} )
+
+function run() {
+  COUNT++
+  console.log('debounce');
+  console.log(COUNT);
 }
+// function addToCount() {
+  // _.debounce(run(), 100, true )
+
+// }
+
 
 
 // const throttle = (func, limit) => {

@@ -14,6 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "lodash": "^4.17.11",
-    "nodemon": "^1.18.10"
+    "nodemon": "^1.18.10",
+    "underscore": "^1.9.1"
   }
 }
