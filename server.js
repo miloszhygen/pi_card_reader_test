@@ -1,6 +1,7 @@
 "use strict";
 const mfrc522 = require("./node_modules/mfrc522-rpi/index.js");
 
+const cardArray = ['a44e81e', 'd80d673']
 //# Init WiringPi with SPI Channel 0
 mfrc522.initWiringPi(0);
 
@@ -35,6 +36,9 @@ setInterval(function(){
     console.log(uid+ '\n');
     const uidValue = uid[0].toString(16) + uid[1].toString(16) + uid[2].toString(16) + uid[3].toString(16);
     console.log(uidValue);
+
+    console.log(cardArray.indexOf(uidValue));
+    
 
     // //# Select the scanned card
     // const memoryCapacity = mfrc522.selectCard(uid);
