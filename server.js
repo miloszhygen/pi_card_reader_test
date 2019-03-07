@@ -18,4 +18,18 @@ firebase.database().ref('users/').once('value').then(function(snapshot) {
 
 cardReader.start(function(uidValue) {
   console.log(uidValue);
+
+  firebase.database().runTransaction(t => {
+    return t.get('users/'+uidValue)
+      .then(doc => {
+        // Add one person to the city population
+        var newPopulation = doc.data().population + 1;
+        t.update(firebase.database().collection('users/'+uidValue), {population: 'newPopulation'});
+      });
+  }).then(result => {
+    console.log('Transaction success!');
+  }).catch(err => {
+    console.log('Transaction failure:', err);
+  });
+
 });
