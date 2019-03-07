@@ -51,6 +51,9 @@ setInterval(function(){
       // debounce(addToCount, 1100, {leading:true} )
       // throttle(function(){ return count++} , 500)
 
+    }else{
+      console.log('NOOOOOOOOO!');
+      
     }
 
 
@@ -78,7 +81,7 @@ setInterval(function(){
     // console.log(count);
 
 
-}, 500);
+}, 100);
 
 const countTest = _.debounce(function () {
   COUNT++
