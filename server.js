@@ -48,7 +48,7 @@ setInterval(function(){
       debounce(function(){
          count++
          console.log(count);
-        }, 500, {leading:true} )
+        }, 600, {leading:true} )
       // throttle(function(){ return count++} , 500)
 
     }
