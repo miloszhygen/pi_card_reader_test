@@ -44,8 +44,9 @@ setInterval(function(){
 
     if (cardArray.indexOf(uidValue) >= 0) {
       console.log(uidValue);
+      addToCount()
       // count++
-      debounce(addToCount, 1100, {leading:true} )
+      // debounce(addToCount, 1100, {leading:true} )
       // throttle(function(){ return count++} , 500)
 
     }
@@ -78,9 +79,11 @@ setInterval(function(){
 }, 1000);
 
 function addToCount() {
-  COUNT++
-  console.log('debounce');
-  console.log(COUNT);
+  debounce(function(){
+    COUNT++
+    console.log('debounce');
+    console.log(COUNT);
+  }, 1100, {leading:true} )
 }
 
 
