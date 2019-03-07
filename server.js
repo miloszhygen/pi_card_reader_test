@@ -1,7 +1,9 @@
 "use strict";
 const mfrc522 = require("./node_modules/mfrc522-rpi/index.js");
 
-const cardArray = ['a44e81e', 'd80d673']
+const cardArray = ['a44e81e', 'd80d673'];
+let count = 0;
+
 //# Init WiringPi with SPI Channel 0
 mfrc522.initWiringPi(0);
 
@@ -38,20 +40,27 @@ setInterval(function(){
     console.log(uidValue);
 
     console.log(cardArray.indexOf(uidValue));
-    
+
+    if (cardArray.indexOf(uidValue) >= 0) {
+      count++;
+      console.log(count);
+    }
+
+
+
 
     // //# Select the scanned card
     // const memoryCapacity = mfrc522.selectCard(uid);
     // console.log("Card Memory Capacity: " + memoryCapacity);
 
-    //# This is the default key for authentication
-    const key = [0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF];
+    // //# This is the default key for authentication
+    // const key = [0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF];
 
-    //# Authenticate on Block 8 with key and uid
-    if (!mfrc522.authenticate(8, key, uid)) {
-        console.log("Authentication Error");
-        return;
-    }
+    // //# Authenticate on Block 8 with key and uid
+    // if (!mfrc522.authenticate(8, key, uid)) {
+    //     console.log("Authentication Error");
+    //     return;
+    // }
 
     // //# Dump Block 8
     // console.log("Block: 8 Data: " + mfrc522.getDataForBlock(8));
@@ -59,4 +68,7 @@ setInterval(function(){
     //# Stop
     mfrc522.stopCrypto();
 
+
+
 }, 500);
+
