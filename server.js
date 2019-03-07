@@ -18,7 +18,7 @@ firebase.database().ref('users/').once('value').then(function(snapshot) {
 cardReader.start(function(uidValue) {
   console.log(uidValue);
 
-  player.play('BleepBlop.aif', function(err) {
+  player.play('BleepBlop.wav', function(err) {
     if (err) throw err
   })
     firebase.database().ref('users/'+uidValue).transaction(function(post) {
