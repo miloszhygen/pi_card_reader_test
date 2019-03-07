@@ -78,13 +78,13 @@ setInterval(function(){
     // console.log(count);
 
 
-}, 2000);
+}, 500);
 
 const countTest = _.debounce(function () {
   COUNT++
   console.log('debounce');
   console.log(COUNT);
-}, 500, true);
+}, 1000, true);
 
 
 // function addToCount() {
