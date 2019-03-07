@@ -5,9 +5,9 @@ const mfrc522 = require("./node_modules/mfrc522-rpi/index.js");
 mfrc522.initWiringPi(0);
 
 //# This loop keeps checking for chips. If one is near it will get the UID and authenticate
-console.log("scanning...");
-console.log("Please put chip or keycard in the antenna inductive zone!");
-console.log("Press Ctrl-C to stop.");
+// console.log("scanning...");
+// console.log("Please put chip or keycard in the antenna inductive zone!");
+// console.log("Press Ctrl-C to stop.");
 
 setInterval(function(){
 
@@ -20,7 +20,7 @@ setInterval(function(){
         console.log("No Card");
         return;
     }
-    console.log("Card detected, CardType: " + response.bitSize);
+    // console.log("Card detected, CardType: " + response.bitSize);
 
     //# Get the UID of the card
     response = mfrc522.getUid();
@@ -30,11 +30,13 @@ setInterval(function(){
     }
     //# If we have the UID, continue
     const uid = response.data;
-    console.log("Card read UID: %s %s %s %s", uid[0].toString(16), uid[1].toString(16), uid[2].toString(16), uid[3].toString(16));
+    // console.log("Card read UID: %s %s %s %s", uid[0].toString(16), uid[1].toString(16), uid[2].toString(16), uid[3].toString(16));
+    console.log('UID');
+    console.log(uid);
 
-    //# Select the scanned card
-    const memoryCapacity = mfrc522.selectCard(uid);
-    console.log("Card Memory Capacity: " + memoryCapacity);
+    // //# Select the scanned card
+    // const memoryCapacity = mfrc522.selectCard(uid);
+    // console.log("Card Memory Capacity: " + memoryCapacity);
 
     //# This is the default key for authentication
     const key = [0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF];
@@ -45,8 +47,8 @@ setInterval(function(){
         return;
     }
 
-    //# Dump Block 8
-    console.log("Block: 8 Data: " + mfrc522.getDataForBlock(8));
+    // //# Dump Block 8
+    // console.log("Block: 8 Data: " + mfrc522.getDataForBlock(8));
 
     //# Stop
     mfrc522.stopCrypto();
