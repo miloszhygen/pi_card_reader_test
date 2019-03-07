@@ -6,6 +6,7 @@ let count = 0;
 
 //# Init WiringPi with SPI Channel 0
 mfrc522.initWiringPi(0);
+console.log('READY!');
 
 //# This loop keeps checking for chips. If one is near it will get the UID and authenticate
 // console.log("scanning...");
@@ -42,9 +43,9 @@ setInterval(function(){
 
     if (cardArray.indexOf(uidValue) >= 0) {
       console.log(uidValue);
-      count++;
-      console.log(count);
-      throttle(function(){ count++} , 500)
+      // count++;
+      throttle(function(){ return count++} , 500)
+
     }
 
 
@@ -69,6 +70,7 @@ setInterval(function(){
     //# Stop
     mfrc522.stopCrypto();
 
+    console.log(count);
 
 
 }, 1000);
