@@ -13,6 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "firebase": "^5.8.5",
     "lodash": "^4.17.11",
     "nodemon": "^1.18.10",
     "underscore": "^1.9.1"
