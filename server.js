@@ -3,7 +3,7 @@ const debounce = require("lodash/debounce");
 const mfrc522 = require("./node_modules/mfrc522-rpi/index.js");
 
 const cardArray = ['a44e81e', 'd80d673'];
-let count = 0;
+let COUNT = 0;
 
 //# Init WiringPi with SPI Channel 0
 mfrc522.initWiringPi(0);
@@ -44,11 +44,8 @@ setInterval(function(){
 
     if (cardArray.indexOf(uidValue) >= 0) {
       console.log(uidValue);
-      // count++;
-      debounce(function(){
-         count++
-         console.log(count);
-        }, 600, {leading:true} )
+      // count++
+      debounce(addToCount(), 600, {leading:true} )
       // throttle(function(){ return count++} , 500)
 
     }
@@ -75,21 +72,27 @@ setInterval(function(){
     //# Stop
     mfrc522.stopCrypto();
 
-    console.log(count);
+    // console.log(count);
 
 
 }, 1000);
 
+function addToCount() {
+  COUNT++
+  console.log('debounce');
+  console.log(count);
+}
 
-const throttle = (func, limit) => {
-  let inThrottle
-  return function() {
-    const args = arguments
-    const context = this
-    if (!inThrottle) {
-      func.apply(context, args)
-      inThrottle = true
-      setTimeout(() => inThrottle = false, limit)
-    }
-  }
- }
+
+// const throttle = (func, limit) => {
+//   let inThrottle
+//   return function() {
+//     const args = arguments
+//     const context = this
+//     if (!inThrottle) {
+//       func.apply(context, args)
+//       inThrottle = true
+//       setTimeout(() => inThrottle = false, limit)
+//     }
+//   }
+//  }
