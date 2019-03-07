@@ -4,7 +4,7 @@ const cardArray = ['a44e81e', 'd80d673'];
 
 if (process.env.NODE_ENV === 'production') {
   const _ = require("underscore");
-  const mfrc522 = require("./node_modules/mfrc522-rpi/index.js");
+  const mfrc522 = require("/usr/lib/node_modules/mfrc522-rpi/index.js");
 
   //# Init WiringPi with SPI Channel 0
   mfrc522.initWiringPi(0);
