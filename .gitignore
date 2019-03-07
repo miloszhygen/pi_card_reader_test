@@ -26,4 +26,5 @@ yarn-error.log*
 
 # ignore catalog's build
 /catalog/build
-firebaseConfig.js
+firebaseConfig
+/firebaseConfig.js
