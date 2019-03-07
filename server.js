@@ -32,7 +32,9 @@ setInterval(function(){
     const uid = response.data;
     // console.log("Card read UID: %s %s %s %s", uid[0].toString(16), uid[1].toString(16), uid[2].toString(16), uid[3].toString(16));
     console.log('UID');
-    console.log(uid);
+    console.log(uid+ '\n');
+    const uidValue = uid[0].toString(16) + uid[1].toString(16) + uid[2].toString(16) + uid[3].toString(16);
+    console.log(uidValue);
 
     // //# Select the scanned card
     // const memoryCapacity = mfrc522.selectCard(uid);
