@@ -1,4 +1,5 @@
 "use strict";
+const debounce = require("lodash/debounce");
 const mfrc522 = require("./node_modules/mfrc522-rpi/index.js");
 
 const cardArray = ['a44e81e', 'd80d673'];
@@ -44,7 +45,11 @@ setInterval(function(){
     if (cardArray.indexOf(uidValue) >= 0) {
       console.log(uidValue);
       // count++;
-      throttle(function(){ return count++} , 500)
+      debounce(function(){
+         count++
+         console.log(count);
+        }, 1100, {leading:true} )
+      // throttle(function(){ return count++} , 500)
 
     }
 

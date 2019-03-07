@@ -8,11 +8,12 @@
     "dev": "nodemon server.js",
     "read": "node node_modules/mfrc522-rpi/test/read.js",
     "write": "node node_modules/mfrc522-rpi/test/write.js",
-    "dump" : "node node_modules/mfrc522-rpi/test/dumpCard.js"
+    "dump": "node node_modules/mfrc522-rpi/test/dumpCard.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "lodash": "^4.17.11",
     "nodemon": "^1.18.10"
   }
 }
