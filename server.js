@@ -19,17 +19,28 @@ firebase.database().ref('users/').once('value').then(function(snapshot) {
 cardReader.start(function(uidValue) {
   console.log(uidValue);
 
-  firebase.database().runTransaction(t => {
-    return t.get('users/'+uidValue)
-      .then(doc => {
-        // Add one person to the city population
-        var newPopulation = doc.data().population + 1;
-        t.update(firebase.database().collection('users/'+uidValue), {population: 'newPopulation'});
-      });
-  }).then(result => {
-    console.log('Transaction success!');
-  }).catch(err => {
-    console.log('Transaction failure:', err);
-  });
+
+
+  // function toggleStar(postRef, uid) {
+    firebase.database().ref('users/'+uidValue).transaction(function(post) {
+     if (post) {
+       if (!post.count) {
+         post.count = 1;
+        //  post.stars[uid] = null;
+       } else {
+         post.count++;
+        //  if (!post.stars) {
+        //    post.stars = {};
+        //  }
+        //  post.stars[uid] = true;
+       }
+     }
+     return post;
+   });
+  // }
+
+
+
+
 
 });
