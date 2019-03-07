@@ -6,9 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon server.js",
-    "read": "node /node_modules/mfrc522-rpi/test/read.js",
-    "write": "node /node_modules/mfrc522-rpi/test/write.js",
-    "dump" : "node /node_modules/mfrc522-rpi/test/dumpCard.js"
+    "read": "node node_modules/mfrc522-rpi/test/read.js",
+    "write": "node node_modules/mfrc522-rpi/test/write.js",
+    "dump" : "node node_modules/mfrc522-rpi/test/dumpCard.js"
   },
   "author": "",
   "license": "ISC",
