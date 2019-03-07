@@ -14,6 +14,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "audio-loader": "^1.0.3",
+    "audio-play": "^2.2.1",
     "firebase": "^5.8.5",
     "lodash": "^4.17.11",
     "nodemon": "^1.18.10",

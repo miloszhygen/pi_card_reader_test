@@ -1,6 +1,7 @@
 "use strict";
 const cardReader = require('./cardReader');
-const player = require('play-sound')({})
+const play = require('audio-play');
+const load = require('audio-loader');
 
 const firebase = require("firebase");
 const firebaseConfig = require('./firebaseConfig');
@@ -14,13 +15,20 @@ firebase.database().ref('users/').once('value').then(function(snapshot) {
   return snapshot.val()
 });
 
+let audioBuffer = null;
+
+load('./BleepBlop.wav').then(function (arg) {
+    audioBuffer = arg;
+});
+
 
 cardReader.start(function(uidValue) {
   console.log(uidValue);
 
-  player.play('BleepBlop.wav', function(err) {
-    if (err) throw err
-  })
+    if (audioBuffer) {
+      play(audioBuffer)
+    }
+
     firebase.database().ref('users/'+uidValue).transaction(function(post) {
      if (post) {
        if (!post.count) {
