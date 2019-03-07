@@ -20,7 +20,7 @@ setInterval(function(){
     //# Scan for cards
     let response = mfrc522.findCard();
     if (!response.status) {
-        console.log("No Card");
+        // console.log("No Card");
         return;
     }
     // console.log("Card detected, CardType: " + response.bitSize);
@@ -34,16 +34,17 @@ setInterval(function(){
     //# If we have the UID, continue
     const uid = response.data;
     // console.log("Card read UID: %s %s %s %s", uid[0].toString(16), uid[1].toString(16), uid[2].toString(16), uid[3].toString(16));
-    console.log('UID');
-    console.log(uid+ '\n');
+    // console.log('UID');
+    // console.log(uid+ '\n');
     const uidValue = uid[0].toString(16) + uid[1].toString(16) + uid[2].toString(16) + uid[3].toString(16);
-    console.log(uidValue);
 
-    console.log(cardArray.indexOf(uidValue));
+    // console.log(cardArray.indexOf(uidValue));
 
     if (cardArray.indexOf(uidValue) >= 0) {
+      console.log(uidValue);
       count++;
       console.log(count);
+      throttle(function(){ count++} , 500)
     }
 
 
@@ -70,5 +71,18 @@ setInterval(function(){
 
 
 
-}, 500);
+}, 1000);
 
+
+const throttle = (func, limit) => {
+  let inThrottle
+  return function() {
+    const args = arguments
+    const context = this
+    if (!inThrottle) {
+      func.apply(context, args)
+      inThrottle = true
+      setTimeout(() => inThrottle = false, limit)
+    }
+  }
+ }
