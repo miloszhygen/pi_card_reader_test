@@ -23,6 +23,9 @@ module.exports = {
 
         //# Get the UID of the card
         response = mfrc522.getUid();
+        if (!response.status) {
+            return;
+        }
 
         const uid = response.data;
         const uidValue = uid[0].toString(16) + uid[1].toString(16) + uid[2].toString(16) + uid[3].toString(16);
