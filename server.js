@@ -14,11 +14,11 @@ firebase.initializeApp(firebaseConfig);
 
 firebase.database().ref('users/').once('value').then(function(snapshot) {
   // var username = (snapshot.val() && snapshot.val().username) || 'Anonymous';
-  console.log(snapshot.val());
-  return snapshot.val()
+  console.log('Connected to firebase');
 });
 
 if (process.env.NODE_ENV === 'production') {
+  console.log('Set music');
   music = new Sound('./Yapppp.wav');
 }
 
@@ -26,6 +26,7 @@ cardReader.start(function(uidValue) {
   console.log(uidValue);
 
     if (process.env.NODE_ENV === 'production') {
+      console.log('Playing music');
       music.play();
     }
 
