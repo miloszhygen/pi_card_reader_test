@@ -20,6 +20,10 @@ firebase.database().ref('users/').once('value').then(function(snapshot) {
 if (process.env.NODE_ENV === 'production') {
   console.log('Set music');
   music = new Sound('./Yapppp.wav');
+
+  music.on('complete' function () {
+    console.log('Sound has finished playing!');
+});
 }
 
 cardReader.start(function(uidValue) {
