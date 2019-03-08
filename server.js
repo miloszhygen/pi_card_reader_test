@@ -3,7 +3,7 @@ const cardReader = require('./cardReader');
 // let Sound = function() {};
 let music = null;
 // if (process.env.NODE_ENV === 'production') {
-    Sound = require('node-aplay');
+    const Sound = require('node-aplay');
 // }
 
 const firebase = require("firebase");
