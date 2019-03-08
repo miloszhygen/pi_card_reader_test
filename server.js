@@ -1,10 +1,10 @@
 "use strict";
 const cardReader = require('./cardReader');
-let Sound = function() {};
+// let Sound = function() {};
 let music = null;
-if (process.env.NODE_ENV === 'production') {
+// if (process.env.NODE_ENV === 'production') {
     Sound = require('node-aplay');
-}
+// }
 
 const firebase = require("firebase");
 const firebaseConfig = require('./firebaseConfig');
@@ -21,9 +21,9 @@ if (process.env.NODE_ENV === 'production') {
   console.log('Set music');
   music = new Sound('./Yapppp.wav');
 
-  music.on('complete' function () {
+  music.on('complete', function () {
     console.log('Sound has finished playing!');
-});
+  });
 }
 
 cardReader.start(function(uidValue) {
