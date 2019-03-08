@@ -50,7 +50,7 @@ if (process.env.NODE_ENV === 'production') {
       interval = setInterval(function() {
         const randomCardArrayIndex = Math.floor(Math.random()*cardArray.length);
           callback(cardArray[randomCardArrayIndex]);
-      }, 2000);
+      }, 5000);
     },
     stop: function () {
       clearInterval(interval);
