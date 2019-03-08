@@ -1,7 +1,10 @@
 "use strict";
 const cardReader = require('./cardReader');
-const play = require('audio-play');
-const load = require('audio-loader');
+let Sound = function() {};
+let music = null;
+if (process.env.NODE_ENV === 'production') {
+    Sound = require('node-aplay');
+}
 
 const firebase = require("firebase");
 const firebaseConfig = require('./firebaseConfig');
@@ -15,18 +18,15 @@ firebase.database().ref('users/').once('value').then(function(snapshot) {
   return snapshot.val()
 });
 
-let audioBuffer = null;
-
-load('./BleepBlop.wav').then(function (arg) {
-    audioBuffer = arg;
-});
-
+if (process.env.NODE_ENV === 'production') {
+  music = new Sound('./BleepBlop.wav');
+}
 
 cardReader.start(function(uidValue) {
   console.log(uidValue);
 
-    if (audioBuffer) {
-      play(audioBuffer)
+    if (process.env.NODE_ENV === 'production') {
+      music.play();
     }
 
     firebase.database().ref('users/'+uidValue).transaction(function(post) {
