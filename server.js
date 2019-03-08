@@ -19,7 +19,7 @@ firebase.database().ref('users/').once('value').then(function(snapshot) {
 });
 
 if (process.env.NODE_ENV === 'production') {
-  music = new Sound('./BleepBlop.wav');
+  music = new Sound('./yapp.m4a');
 }
 
 cardReader.start(function(uidValue) {
