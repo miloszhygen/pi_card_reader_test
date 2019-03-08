@@ -10,7 +10,7 @@ firebase.database().ref('users/').once('value').then(function(snapshot) {
   console.log('Connected to firebase');
 });
 
-let music = new Sound('./BleepBlop.wav');
+let music = new Sound('./YappShort.wav');
 
 music.on('complete', function () {
   console.log('Sound has finished playing!');
